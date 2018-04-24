@@ -17,20 +17,21 @@ class API {
   APIRequest() {
     let promise = new Promise(function(resolve, reject) {
       const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://dinoipsum.herokuapp.com/api/?format=json&paragraphs=2&words=30');
+      xhr.send();
       xhr.onload = function() {
         if (this.status === 200) {
           console.log("Successful call " + xhr.response);
           console.log("type of response" + xhr.responseType);
+          console.log("text of response" + xhr.responseText);
           resolve(xhr.response);
           } else {
           console.log('FUUUUUUUUUU');
           reject(Error(xhr.statusText));
           }
       }
-      xhr.open('GET', 'http://dinoipsum.herokuapp.com/api/?format=json&paragraphs=2&words=30');
-      xhr.send();
     });
-    let returnValue = promise.then(resolve);
+    let returnValue = promise.then(function(response){});
     console.log("after promise " + returnValue);
     return returnValue;
     // const xhr = new XMLHttpRequest();
