@@ -21,9 +21,6 @@ class API {
       xhr.send();
       xhr.onload = function() {
         if (this.status === 200) {
-          console.log("Successful call " + xhr.response);
-          console.log("type of response" + xhr.responseType);
-          console.log("text of response" + xhr.responseText);
           resolve(xhr.response);
           } else {
           console.log('FUUUUUUUUUU');
@@ -31,22 +28,14 @@ class API {
           }
       }
     });
-    let returnValue = promise.then(function(response){});
-    console.log("after promise " + returnValue);
-    return returnValue;
-    // const xhr = new XMLHttpRequest();
-    // let responseObject = '';
-    // xhr.open('GET', 'http://dinoipsum.herokuapp.com/api/?format=json&paragraphs=2&words=30');
-    // xhr.onload = function() {
-    // 	if (this.status === 200) {
-    //     console.log(this.response);
-    // 		responseObject = this.response;
-    //     } else {
-    // 		console.log('FUUUUUUUUUU');
-    //     }
-    //   return responseObject;
-    // };
-    // xhr.send();
+    let dino = promise.then(function(response) {
+      let output = JSON.parse(response);
+      console.log("after promise" + output);
+      return output;
+    }, function(error) {
+      alert("There has been an error!: " + error);
+    });
+    return dino;
   }
 }
 
