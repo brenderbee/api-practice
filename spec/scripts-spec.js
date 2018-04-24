@@ -1,8 +1,10 @@
-import { Name } from './../src/scripts.js';
+import { API } from './../src/scripts.js';
 
-describe('name', function() {
+describe('API Test', function() {
 
-  it('should test whether a number matches another number', function() {
-    expect(1).toEqual(1);
+  it('should return a variable containing the API response', function() {
+    const newAPI = new API();
+    let test = 0;
+    expect(test=newAPI.APIRequest()).not.toEqual(0);
   });
 });
