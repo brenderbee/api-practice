@@ -10,10 +10,10 @@
 
 // class API {
 //
-//   APIRequest() {
+//   function APIRequest(inputParagraph, inputWords) {
 //     let promise = new Promise(function(resolve, reject) {
 //       const xhr = new XMLHttpRequest();
-//       xhr.open('GET', 'http://dinoipsum.herokuapp.com/api/?format=json&paragraphs=2&words=30');
+//       xhr.open('GET', `http://dinoipsum.herokuapp.com/api/?format=json&paragraphs=${inputParagraph}&words=${inputWords}`);
 //       xhr.send();
 //       xhr.onload = function() {
 //         if (this.status === 200) {
@@ -24,15 +24,15 @@
 //           }
 //       }
 //     });
-//     let dino = promise.then(function(response) {
-//       let output = JSON.parse(response);
-//       console.log("after promise" + output);
-//       return output;
-//     }, function(error) {
-//       alert("There has been an error!: " + error);
-//     });
-//     return dino;
-//   }
-// }
-//
-// export { API };
+    // let dino = promise.then(function(response) {
+    //   let output = JSON.parse(response);
+    //   console.log("after promise" + output);
+    //   return output;
+    // }, function(error) {
+    //   alert("There has been an error!: " + error);
+    // });
+    // return dino;
+  }
+}
+
+export { API };
