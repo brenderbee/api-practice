@@ -37,15 +37,21 @@ $(document).ready(function(){
 // end of Javascript API request
 
 // Jquery API request
+// jQuery's ajax function returns a promise, the reason you aren't working with
+// it here, is because we are instead using the success and error handlers on the
+// ajax method
     $.ajax({
-      url: `http://dinoipsum.herokuapp.com/api/?format=json&paragraphs=${inputParagraph}&words=${inputWords}`,
+      url: 'http://dinoipsum.herokuapp.com/api/',
       type: 'GET',
       data: {
-        format: 'json'
+        format: 'json',
+        paragraphs: inputParagraph,
+        words: inputWords
       },
+      //   success(response) { This is how you write an ES6 method or function
       success: function(response) {
-        let arrays = JSON.parse(response);
-        arrays.forEach(function(array) {
+        // jQUery parses the response for you, no need for JSON.parse
+        response.forEach(function(array) {
           let string = array.join(' ');
           $(".outputDinos").append('<p>' + string + '</p>');
         });
@@ -55,5 +61,24 @@ $(document).ready(function(){
       }
     });
 // end of Jquery API request
+
+    // let myRequest = $.ajax({
+    //   url: 'http://dinoipsum.herokuapp.com/api/',
+    //   type: 'GET',
+    //   data: {
+    //     format: 'json',
+    //     paragraphs: inputParagraph,
+    //     words: inputWords
+    //   });
+    //
+    // myRequest.then((response) => {
+    //   response.forEach((array) => {
+    //     let string = array.join(' ');
+    //     $(".outputDinos").append('<p>' + string + '</p>');
+    //   });
+    // }, (error) => {
+    //   $(".outputDinos").append("There has been an error!");
+    // })
+
   });
 });
